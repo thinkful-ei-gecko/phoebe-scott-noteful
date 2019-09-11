@@ -10,25 +10,21 @@ export default class NotePage extends React.Component {
     }
 
     render() {
-        let note = this.findNote();
+        // let note = this.findNote();
+
         return (
             <>
-                <header>
-                    <h1>Noteful</h1>
-                </header>
-                <main>
-                    <section className="Nav">
-                        <button class="go-back">Go Back</button>
-                        {/* <h2>{folder.name}</h2> */}
-                    </section>
+                <section className="Nav">
+                    <button class="go-back">Go Back</button>
+                    {/* <h2>{folder.name}</h2> */}
+                </section>
 
-                    <section>
-                        <>
-                            <NoteItem name={note.name} modified={note.modified} id={note.id}/>
-                            <p>{note.content}</p>
-                        </>
-                    </section>
-                </main>
+                <section>
+
+                    <NoteItem name={this.props.note.name} modified={this.props.note.modified} id={this.props.note.id} />
+                    <p>{this.props.note.content}</p>
+
+                </section>
             </>
         )
     }

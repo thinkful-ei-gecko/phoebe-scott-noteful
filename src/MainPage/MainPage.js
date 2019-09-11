@@ -6,18 +6,13 @@ export default class MainPage extends React.Component {
   render() {
     return (
       <>
-        <header>
-          <h1>Noteful</h1>
-        </header>
-        <main>
           <section className="Nav">
-            <FolderList />
+            <FolderList state={this.props.state}/>
           </section>
 
           <section>
-            <NoteList />
+            <NoteList state={this.props.state}/>
           </section>
-        </main>
       </>
     );
   }

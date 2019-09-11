@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class NoteItem extends React.Component {
 
@@ -9,7 +10,10 @@ export default class NoteItem extends React.Component {
         let dateModified = new Date(this.props.modified).toLocaleString('en-US', options);
         return (
             <li key={this.props.id}>
-                <h2>{this.props.name}</h2>
+                <Link to={`/notes/${this.props.id}`}>
+                    <h2>{this.props.name}</h2>
+                </Link>
+
                 <p>{dateModified}</p>
                 <button className="delete">Delete Note</button>
             </li>
