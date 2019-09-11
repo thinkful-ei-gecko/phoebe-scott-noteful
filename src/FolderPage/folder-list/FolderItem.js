@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import './FolderItem.css'
 
 export default class FolderItem extends React.Component {
 
