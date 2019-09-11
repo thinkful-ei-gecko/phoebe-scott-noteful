@@ -3,10 +3,11 @@ import NoteItem from "./NoteItem";
 
 export default class NoteList extends React.Component {
   generateNoteItems() {
+    console.log(this.props.folderId)
     let noteList = [];
-    if (this.props.state.activeFolderId !== null) {
+    if (this.props.folderId !== null) {
         noteList = this.props.state.data.notes.filter(note => {
-          return (this.props.state.activeFolderId === note.folderId)
+          return (this.props.folderId === note.folderId)
         })
     } else {
         noteList = this.props.state.data.notes
