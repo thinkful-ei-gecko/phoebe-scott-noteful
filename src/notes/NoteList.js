@@ -6,7 +6,7 @@ export default class NoteList extends React.Component {
     let noteList = [];
     if (this.props.state.activeFolderId !== null) {
         noteList = this.props.state.data.notes.filter(note => {
-            return (this.props.state.activeFolderId === note.folderId)
+          return (this.props.state.activeFolderId === note.folderId)
         })
     } else {
         noteList = this.props.state.data.notes
