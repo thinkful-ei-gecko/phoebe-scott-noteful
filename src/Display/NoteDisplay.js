@@ -1,5 +1,7 @@
 import React from 'react';
 import NoteItem from '../notes/NoteItem'
+import { Route } from 'react-router-dom'
+import NoteSidebar from '../Sidebar/NoteSidebar'
 
 export default class NotePage extends React.Component {
     findNote() {
@@ -10,14 +12,14 @@ export default class NotePage extends React.Component {
     }
 
     render() {
-        // let note = this.findNote();
+        let folderName = this.props.state.data.folders.find(folder => this.props.note.folderId === folder.id).name;
 
         return (
             <>
-                <section className="Nav">
-                    <button class="go-back">Go Back</button>
-                    {/* <h2>{folder.name}</h2> */}
-                </section>
+                <Route path="/notes" render={() =>
+                    <NoteSidebar folderName={folderName} />
+                }
+                />
 
                 <section>
 
