@@ -1,11 +1,10 @@
 import React from 'react';
-import dataStore from '../../dummy-store'
 import FolderItem from './FolderItem'
 
 export default class FolderList extends React.Component {
 
     generateFolderItems() {
-        let folderList = dataStore.folders.map(folder => {
+        let folderList = this.props.state.data.folders.map(folder => {
             return <FolderItem name={folder.name} id={folder.id} />
         })
         return folderList;
@@ -13,9 +12,12 @@ export default class FolderList extends React.Component {
 
     render() {
         return (
-            <ul>
+            <div className="folder-list">
+                <ul>
                 {this.generateFolderItems()}
-            </ul>
+                </ul>
+                <button className="add-folder">Add Folder</button>
+            </div>
         )
     }
 }

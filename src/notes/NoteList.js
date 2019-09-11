@@ -1,22 +1,31 @@
-import React from 'react';
-import dataStore from '../dummy-store'
-import NoteItem from './NoteItem'
-
+import React from "react";
+import NoteItem from "./NoteItem";
 
 export default class NoteList extends React.Component {
-
-    generateNoteItems() {
-        let noteList = dataStore.notes.map(note => {
-            return <NoteItem name={note.name} id={note.id} modified={note.modified} />
+  generateNoteItems() {
+    let noteList = [];
+    if (this.props.state.activeFolderId !== null) {
+        noteList = this.props.state.data.notes.filter(note => {
+            return (this.props.state.activeFolderId === note.folderId)
         })
-        return noteList;
+    } else {
+        noteList = this.props.state.data.notes
     }
-
-    render() {
+    noteList = noteList.map(note => {
         return (
-            <ul>
-                {this.generateNoteItems()}
-            </ul>
-        )
+          <NoteItem name={note.name} id={note.id} modified={note.modified} />
+        );
+      });
+      return noteList;
     }
+  
+
+  render() {
+    return (
+      <div className="note-list">
+        <ul>{this.generateNoteItems()}</ul>
+        <button className="add-note">Add note</button>
+      </div>
+    );
+  }
 }
